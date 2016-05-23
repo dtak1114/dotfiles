@@ -18,7 +18,7 @@ export ZSH=$HOME/.oh-my-zsh
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 #for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
-for file in ~/.{exports,aliases,private}; do
+for file in ~/.{exports,private,aliases}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
@@ -71,7 +71,7 @@ plugins=(ssh-agent)
 
 # User configuration
 
-export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 #
 export PATH="$PATH:/usr/local/share/drill/bin"
