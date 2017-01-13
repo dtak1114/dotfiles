@@ -127,49 +127,6 @@ if has("autocmd")
   autocmd FileType python setl tabstop=8 expandtab shiftwidth=4 softtabstop=4 smarttab
 endif
 
-" Neovundle
-"
-
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-
-" call neobundle#begin(expand('~/.vim/bundle/'))
-" " NeoBundle 'jiangmiao/auto-pairs'
-" " originalrepos on github
-" "
-" NeoBundleFetch 'Shougo/neobundle.vim'
-" NeoBundle 'davidhalter/jedi-vim'
-" NeoBundle 'thinca/vim-quickrun'
-" NeoBundle 'tpope/vim-surround'
-" NeoBundle 'rust-lang/rust.vim'
-" NeoBundle 'scrooloose/nerdtree'
-" NeoBundle 'Shougo/neocomplcache'
-" NeoBundle 'Shougo/neocomplete'
-" NeoBundle 'Shougo/neosnippet'
-" NeoBundle 'Shougo/neosnippet-snippets'
-" NeoBundle 'jpalardy/vim-slime'
-" NeoBundle 'scrooloose/syntastic'
-" NeoBundle 'vim-ruby/vim-ruby'
-" NeoBundle 'https://bitbucket.org/kovisoft/slimv'
-" NeoBundle 'scrooloose/nerdcommenter' "commentout
-" NeoBundle 'nathanaelkane/vim-indent-guides' "visualize indents
-" " NeoBundle 'derekwyatt/vim-scala' 
-" " NeoBundle 'faith/vim-go'
-" NeoBundle 'nathanaelkane/vim-indent-guides'
-" " NeoBundle 'davidhalter/jedi-vim'
-" NeoBundle 'kevinw/pyflakes-vim'
-" " NeoBundle 'Keithbsmiley/swift.vim'
-" " NeoBundle 'elzr/vim-json'
-" " NeoBundle 'ensime/ensime-vim'
-" " NeoBundle 'tpope/pathogen.vim'
-"  NeoBundle 'moll/vim-node' " nodejs syntax highlighting
-" " NeoBundle 'itchtny/lightline.vim' # not found 
-
-" "NeoBundle 'Shougo/unite.vim'
-" " node js
-" NeoBundle 'leafgarland/typescript-vim'
-" call neobundle#end()
-
-" NeoBundleCheck
 
 "vim-closetag setting
 let g:closetag_filenames = "*.html,*.xml,*.erb"
@@ -205,6 +162,9 @@ map <C-h> gT
 
 " quickrun-vim
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
+
+
+ 
 
 
 
@@ -434,7 +394,6 @@ endif
 " Neovundle
 set runtimepath+=~/.vim/bundle/neobundle.vim
 call neobundle#begin(expand('~/.vim/bundle/'))
-
 " NeoBundle 'jiangmiao/auto-pairs'
 " originalrepos on github
 NeoBundle 'Shougo/vimproc.vim', {
@@ -450,6 +409,35 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'jpalardy/vim-slime'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'scrooloose/nerdcommenter' "commentout
+NeoBundle 'nathanaelkane/vim-indent-guides' "visualize indents
+NeoBundle 'derekwyatt/vim-scala' 
+" NeoBundle 'faith/vim-go'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+" NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'Keithbsmiley/swift.vim'
+" NeoBundle 'elzr/vim-json'
+" NeoBundle 'ensime/ensime-vim'
+" NeoBundle 'tpope/pathogen.vim'
+" NeoBundle 'moll/vim-node' " nodejs syntax highlighting
+NeoBundle 'rust-lang/rust.vim'
+
+" node js
+NeoBundle 'leafgarland/typescript-vim'
+call neobundle#end()
+
+NeoBundleCheck
+
+filetype plugin indent on     " required!
+filetype indent on
+
+" neocomplete
+"
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
@@ -468,31 +456,10 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'jpalardy/vim-slime'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'https://bitbucket.org/kovisoft/slimv'
-NeoBundle 'scrooloose/nerdcommenter' "commentout
-NeoBundle 'nathanaelkane/vim-indent-guides' "visualize indents
-NeoBundle 'derekwyatt/vim-scala' 
-" NeoBundle 'faith/vim-go'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-" NeoBundle 'davidhalter/jedi-vim'
-" NeoBundle 'kevinw/pyflakes-vim'
-NeoBundle 'Keithbsmiley/swift.vim'
-" NeoBundle 'elzr/vim-json'
-" NeoBundle 'ensime/ensime-vim'
-" NeoBundle 'tpope/pathogen.vim'
-" NeoBundle 'moll/vim-node' " nodejs syntax highlighting
 
-" node js
-NeoBundle 'leafgarland/typescript-vim'
-call neobundle#end()
-
-filetype plugin indent on     " required!
-filetype indent on
+" rust.vim
+" requires rustfmt
+" let g:rustfmt_autosave = 1
 
 "vim-closetag setting
 let g:closetag_filenames = "*.html,*.xml,*.erb"
