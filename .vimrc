@@ -1,10 +1,16 @@
-" Use the Solarized Dark theme
-"set background=dark
-" let g:solarized_termtrans=1
-colorscheme molokai
-let g:molokai_original = 1
-let g:rehash256 = 1
-set t_Co=256
+" Keymaps
+noremap <S-h> ^
+noremap <S-j> {
+noremap <S-k> }
+noremap <S-l> $
+" jump to matching paren
+noremap <m> %
+noremap <C-q> :q<CR>
+noremap <C-w> :w!<CR>
+noremap == gg=G''
+nnoremap <Space>v :vs<CR>:<C-u>VimShell<CR>
+map :W :w
+map :Q :q
 
 " Adjust indents automatically by judging the content of inserted text.
 "set smartindent 
@@ -121,62 +127,82 @@ if has("autocmd")
 endif
 
 " Neovundle
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#begin(expand('~/.vim/bundle/'))
+"
 
-      " NeoBundle 'jiangmiao/auto-pairs'
-      " originalrepos on github
-      NeoBundle 'Shougo/neobundle.vim'
-      NeoBundle 'tpope/vim-surround'
-      " NeoBundle 'Shougo/vimproc'
-      "NeoBundle 'Shougo/vimshell'
-      "NeoBundle 'Shougo/unite.vim'
-      NeoBundle 'Shougo/neocomplcache'
-      NeoBundle 'Shougo/neocomplete'
-      NeoBundle 'Shougo/neosnippet'
-      NeoBundle 'Shougo/neosnippet-snippets'
-      NeoBundle 'jpalardy/vim-slime'
-      NeoBundle 'scrooloose/syntastic'
-      NeoBundle 'vim-ruby/vim-ruby'
-      NeoBundle 'https://bitbucket.org/kovisoft/slimv'
-      NeoBundle 'scrooloose/nerdcommenter' "commentout
-      NeoBundle 'nathanaelkane/vim-indent-guides' "visualize indents
-      NeoBundle 'derekwyatt/vim-scala' 
-      " NeoBundle 'faith/vim-go'
-      NeoBundle 'nathanaelkane/vim-indent-guides'
-      " NeoBundle 'davidhalter/jedi-vim'
-      NeoBundle 'kevinw/pyflakes-vim'
-      NeoBundle 'Keithbsmiley/swift.vim'
-      " NeoBundle 'elzr/vim-json'
-      NeoBundle 'ensime/ensime-vim'
-      " NeoBundle 'tpope/pathogen.vim'
-      " NeoBundle 'moll/vim-node' " nodejs syntax highlighting
+set runtimepath+=~/.vim/bundle/neobundle.vim/
 
-      " node js
-      NeoBundle 'leafgarland/typescript-vim'
-  call neobundle#end()
-endif
-filetype plugin indent on     " required!
-filetype indent on
+call neobundle#begin(expand('~/.vim/bundle/'))
+" NeoBundle 'jiangmiao/auto-pairs'
+" originalrepos on github
+"
+NeoBundleFetch 'Shougo/neobundle.vim'
+" NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'tpope/vim-surround'
+" NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'jpalardy/vim-slime'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'vim-ruby/vim-ruby'
+" NeoBundle 'https://bitbucket.org/kovisoft/slimv'
+NeoBundle 'scrooloose/nerdcommenter' "commentout
+NeoBundle 'nathanaelkane/vim-indent-guides' "visualize indents
+" NeoBundle 'derekwyatt/vim-scala' 
+" NeoBundle 'faith/vim-go'
+" NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'kevinw/pyflakes-vim'
+" NeoBundle 'Keithbsmiley/swift.vim'
+" NeoBundle 'elzr/vim-json'
+NeoBundle 'ensime/ensime-vim'
+" NeoBundle 'tpope/pathogen.vim'
+" NeoBundle 'moll/vim-node' " nodejs syntax highlighting
+" NeoBundle 'itchtny/lightline.vim' # not found 
+
+"NeoBundle 'Shougo/unite.vim'
+" node js
+NeoBundle 'leafgarland/typescript-vim'
+call neobundle#end()
+
+NeoBundleCheck
 
 "vim-closetag setting
 let g:closetag_filenames = "*.html,*.xml,*.erb"
 
 " カンマ連打でコメントトグル with NERDCommenter
- let NERDSpaceDelims = 1
- nmap ,, <Plug>NERDCommenterToggle
- vmap ,, <Plug>NERDCommenterToggle
+let NERDSpaceDelims = 1
+nmap ,, <Plug>NERDCommenterToggle
+vmap ,, <Plug>NERDCommenterToggle
 
- " typescript-vim
- " To run the compiler, enter :make, this will run tsc against the last saved
- " version of your currently edited file.
- " tsc compiler option
- " let g:typescript_compiler_options = ''
- " show :make error msg in subwindow
- " autocmd QuickFixCmdPost [^l]* nested cwindow
- " autocmd QuickFixCmdPost    l* nested lwindow
+" nerdtree
+" ?: help
+" o: open a file
+" t: open file in new tab
+" T: open file in new tab(background)
+" r: refresh file node trees
+" m: newfile / remove/ move / copy
+"
+" open explorer
+map <C-n> :NERDTreeToggle<CR>
+"go to next tab
+map <C-l> gt
+"go to previous tab
+map <C-h> gT
 
+" typescript-vim
+" To run the compiler, enter :make, this will run tsc against the last saved
+" version of your currently edited file.
+" tsc compiler option
+" let g:typescript_compiler_options = ''
+" show :make error msg in subwindow
+" autocmd QuickFixCmdPost [^l]* nested cwindow
+" autocmd QuickFixCmdPost    l* nested lwindow
+
+" quickrun-vim
+let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 
 
 
@@ -217,31 +243,28 @@ function! s:GetHighlight(hi)
 endfunction
 
 " Syntastic settings
-  let g:syntastic_check_on_open=0 "ファイルを開いたときはチェックしない
-  let g:syntastic_check_on_save=1 "保存時にはチェック
-  let g:syntastic_check_on_wq = 0 " wqではチェックしない
-  let g:syntastic_auto_loc_list=1 "エラーがあったら自動でロケーションリストを開く
-  let g:syntastic_loc_list_height=3 "エラー表示ウィンドウの高さ
-  set statusline+=%#warningmsg# "エラーメッセージの書式
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-  let g:syntastic_javascript_checkers = ['eslint'] "ESLintを使う
-  let g:syntastic_mode_map = {
-        \ 'mode': 'active',
-        \ 'active_filetypes': ['javascript', 'ruby'],
-        \ 'passive_filetypes': []
-        \ }
+let g:syntastic_check_on_open=0 "ファイルを開いたときはチェックしない
+let g:syntastic_check_on_save=1 "保存時にはチェック
+let g:syntastic_check_on_wq = 0 " wqではチェックしない
+let g:syntastic_auto_loc_list=1 "エラーがあったら自動でロケーションリストを開く
+let g:syntastic_loc_list_height=3 "エラー表示ウィンドウの高さ
+set statusline+=%#warningmsg# "エラーメッセージの書式
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_javascript_checkers = ['eslint'] "ESLintを使う
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['javascript', 'ruby'], 'passive_filetypes': [] }
 
-  " syntastic python configure
-  " requires pip install pyflakes pep8.
-  let g:syntastic_python_checkers = ['pyflakes', 'pep8']
-  let g:syntastic_enable_signs=1
+" syntastic python configure
+" requires pip install pyflakes pep8.
+let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+let g:syntastic_python_python_exec = 'python2.7'
+let g:syntastic_enable_signs=1
 
-  " syntastic ruby configure
-  " gem i rubocop
-  let g:syntastic_ruby_checkers = ['mri','rubocop']
-  " use rvm rubocop.. 
-  let g:syntastic_ruby_rubocop_exec = '/Users/dicek/.rvm/gems/ruby-2.3.0/bin/rubocop'
+" syntastic ruby configure
+" gem i rubocop
+let g:syntastic_ruby_checkers = ['mri','rubocop']
+" use rvm rubocop.. 
+let g:syntastic_ruby_rubocop_exec = '/Users/dicek/.rvm/gems/ruby-2.3.0/bin/rubocop'
 
 
 
@@ -270,4 +293,11 @@ nnoremap <silent> <C-L> :noh<C-L><CR>
 let g:indent_guides_auto_colors=1
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
+
+"set background=solarized
+" let g:solarized_termtrans=0
+colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
+set t_Co=256
 
