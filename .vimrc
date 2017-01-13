@@ -426,6 +426,7 @@ NeoBundle 'Keithbsmiley/swift.vim'
 " NeoBundle 'tpope/pathogen.vim'
 " NeoBundle 'moll/vim-node' " nodejs syntax highlighting
 NeoBundle 'rust-lang/rust.vim'
+NeoBundle 'racer-rust/vim-racer'
 
 " node js
 NeoBundle 'leafgarland/typescript-vim'
@@ -460,6 +461,14 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 " rust.vim
 " requires rustfmt
 " let g:rustfmt_autosave = 1
+" vim-racer
+set hidden
+let g:racer_cmd = "/Users/dicek/.cargo/bin/racer"
+" au FileType rust nmap gd <Plug>(rust-def)
+" au FileType rust nmap gs <Plug>(rust-def-split)
+" au FileType rust nmap gx <Plug>(rust-def-vertical)
+" au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
 
 "vim-closetag setting
 let g:closetag_filenames = "*.html,*.xml,*.erb"
