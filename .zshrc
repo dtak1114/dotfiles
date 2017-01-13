@@ -1,7 +1,8 @@
+
 # Path to your oh-my-zsh installation.
 
-# DEFAULT_PYTHON_VENV_VERSION=2
-DEFAULT_PYTHON_VENV_VERSION=3
+DEFAULT_PYTHON_VENV_VERSION=2
+# DEFAULT_PYTHON_VENV_VERSION=3
 
 #require install oh-my-zsh
 export ZSH=$HOME/.oh-my-zsh
@@ -19,9 +20,9 @@ stty -ixon &> /dev/null
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-#for file in ~/.{path,bash_prompt,exports,aliases,functions,extra, rustup_compl}; do
+#for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 for file in ~/.{exports,private,aliases}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+  [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;
 
@@ -29,7 +30,9 @@ unset file;
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="muse"
+
 
 setopt nonomatch
 
@@ -37,7 +40,7 @@ setopt nonomatch
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -49,15 +52,15 @@ setopt nonomatch
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -71,22 +74,27 @@ setopt nonomatch
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ssh-agent)
+plugins=(ssh-agent tmux)
 
 # User configuration
 
 export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 #
-export PATH="$PATH:/usr/local/share/drill/bin"
+# export PATH="$PATH:/usr/local/share/drill/bin"
 export PATH="$HOME/.embulk/bin:$PATH"
 
 # golang
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 # export PATH=$PATH:$HOME/anaconda3/bin
 
-source $ZSH/oh-my-zsh.sh
+#rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
+#nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -117,7 +125,6 @@ source $ZSH/oh-my-zsh.sh
 # export PATH=/home/dicek/anaconda/bin:$PATH 
 #
 
-
 #python virtualenv
 export PYTHON_VENV_HOME=$HOME/pyenv
 #activate by default 
@@ -126,9 +133,30 @@ if [ $DEFAULT_PYTHON_VENV_VERSION -eq 2 ]; then
 elif [ $DEFAULT_PYTHON_VENV_VERSION -eq 3 ]; then
   . $PYTHON_VENV_HOME/venv35/bin/activate
 fi
-source /usr/local/opt/autoenv/activate.sh
+# source /usr/local/opt/autoenv/activate.sh
 
 #show weather
 # curl wttr.in/Tokyo
 
-export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
+# Load RVM into a shell session *as a function*
+
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# apex auto completion
+# _apex()  {
+  # COMPREPLY=()
+  # local cur="${COMP_WORDS[COMP_CWORD]}"
+  # local opts="$(apex autocomplete -- ${COMP_WORDS[@]:1})"
+  # COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+  # return 0
+# }
+
+# complete -F _apex apex
+
+#overwrite the slow function in oh-my-zsh
+function git_prompt_status() {
+# nop
+}
+
+# launch tmux
+if [ "$TMUX" = "" ]; then tmux; fi
