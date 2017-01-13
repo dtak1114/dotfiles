@@ -1,11 +1,13 @@
 # Path to your oh-my-zsh installation.
 
-DEFAULT_PYTHON_VENV_VERSION=2
-# DEFAULT_PYTHON_VENV_VERSION=3
+# DEFAULT_PYTHON_VENV_VERSION=2
+DEFAULT_PYTHON_VENV_VERSION=3
 
 #require install oh-my-zsh
 export ZSH=$HOME/.oh-my-zsh
 
+#disable c-q, c-s to be caught by terminal
+stty -ixon &> /dev/null
 # run docker daemon
 # default_dm_running="$(docker-machine ls|grep Running|grep default |awk '{print $1}')"
 # if [ -z "$default_dm_running" ];then
@@ -17,7 +19,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-#for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+#for file in ~/.{path,bash_prompt,exports,aliases,functions,extra, rustup_compl}; do
 for file in ~/.{exports,private,aliases}; do
 	[ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
@@ -28,6 +30,8 @@ unset file;
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+
+setopt nonomatch
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -77,7 +81,12 @@ export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/
 export PATH="$PATH:/usr/local/share/drill/bin"
 export PATH="$HOME/.embulk/bin:$PATH"
 
+# golang
+export PATH=$PATH:/usr/local/opt/go/libexec/bin
+# export PATH=$PATH:$HOME/anaconda3/bin
+
 source $ZSH/oh-my-zsh.sh
+
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -108,6 +117,7 @@ source $ZSH/oh-my-zsh.sh
 # export PATH=/home/dicek/anaconda/bin:$PATH 
 #
 
+
 #python virtualenv
 export PYTHON_VENV_HOME=$HOME/pyenv
 #activate by default 
@@ -116,6 +126,7 @@ if [ $DEFAULT_PYTHON_VENV_VERSION -eq 2 ]; then
 elif [ $DEFAULT_PYTHON_VENV_VERSION -eq 3 ]; then
   . $PYTHON_VENV_HOME/venv35/bin/activate
 fi
+source /usr/local/opt/autoenv/activate.sh
 
 #show weather
 # curl wttr.in/Tokyo

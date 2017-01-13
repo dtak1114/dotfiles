@@ -1,12 +1,8 @@
-# GCP
 
 # The next line updates PATH for the Google Cloud SDK.
 source "$HOME/google-cloud-sdk/path.zsh.inc"
 # The next line enables shell command completion for gcloud.
 source "$HOME/google-cloud-sdk/completion.zsh.inc"
-
-# Dockers
-alias dm='docker-machine'
 
 # chrome
 alias chrome='open -a /Applications/Google\ Chrome.app'
@@ -26,13 +22,16 @@ alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
 # Shortcuts
-alias s="cd ~/shared"
+alias s="source "
 alias p="cd ~/projects"
 alias ga="git add"
 alias gst="git status"
 alias gc="git commit -m"
 alias h="history"
 alias j="jobs"
+alias ipy='ipython'
+alias usepython3=". $HOME/pyenv/venv35/bin/activate"
+alias usepython2=". $HOME/pyenv/venv27/bin/activate"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
