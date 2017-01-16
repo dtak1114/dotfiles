@@ -468,6 +468,7 @@ let g:racer_cmd = "/Users/dicek/.cargo/bin/racer"
 " au FileType rust nmap gs <Plug>(rust-def-split)
 " au FileType rust nmap gx <Plug>(rust-def-vertical)
 " au FileType rust nmap <leader>gd <Plug>(rust-doc)
+noremap <F10> :RustRun<CR>
 
 
 "vim-closetag setting
