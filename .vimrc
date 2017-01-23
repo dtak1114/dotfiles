@@ -1,17 +1,18 @@
-
 " Keymaps
 noremap <S-h> ^
 noremap <S-j> {
 noremap <S-k> }
 noremap <S-l> $
+imap jj <esc>
+
 " jump to matching paren
 noremap <m> %
 noremap <C-q> :q<CR>
 noremap <C-w> :w!<CR>
 noremap == gg=G''
 nnoremap <Space>v :vs<CR>:<C-u>VimShell<CR>
-map :W :w
-map :Q :q
+map :W <esc>:w
+map :Q <esc>:q
 
 " Adjust indents automatically by judging the content of inserted text.
 "set smartindent 
@@ -240,7 +241,7 @@ nnoremap <silent> <C-L> :noh<C-L><CR>
        " zo -> open folding
        " zR -> open all
 set foldmethod=syntax
-set foldlevelstart=1
+set foldlevelstart=3
 
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
@@ -427,6 +428,7 @@ NeoBundle 'Keithbsmiley/swift.vim'
 " NeoBundle 'moll/vim-node' " nodejs syntax highlighting
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'racer-rust/vim-racer'
+NeoBundle 'aklt/plantuml-syntax'
 
 " node js
 NeoBundle 'leafgarland/typescript-vim'
