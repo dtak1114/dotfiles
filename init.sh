@@ -9,7 +9,7 @@ do
   [[ "$f" == .git* ]] && continue
   [[ "$f" == ".DS_Config" ]] && continue
   if [ ! -e "$HOME/$f" ]; then 
-    echo "creating $f" && ln -s "$f" "$HOME/$f"
+    echo "creating $f" && ln -s "$SCRIPT_DIR/$f" "$HOME/$f"
     # echo "creating $f" 
   else
     echo "$HOME/$f already exists."
