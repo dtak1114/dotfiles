@@ -20,7 +20,9 @@ export MANPAGER='less -X';
 # Always enable colored `grep` output.
 export GREP_OPTIONS='--color=auto';
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+if [ -e "usr/libexec/java_home" ]; then 
+  export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+fi
 
 # export GIT_PROXY_COMMAND=corkscrewtunnel
 #

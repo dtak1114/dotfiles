@@ -8,7 +8,10 @@
 alias chrome='open -a /Applications/Google\ Chrome.app'
 
 # sed 
-alias sed='/usr/local/opt/gnu-sed/libexec/gnubin/sed'
+if [ -e "/usr/local/opt/gnu-sed/libexec/gnubin/sed" ]
+then
+  alias sed='/usr/local/opt/gnu-sed/libexec/gnubin/sed'
+fi
 # alias readlink='~/bin/readlink'
 
 # Often forgot commands
