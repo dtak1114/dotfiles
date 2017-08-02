@@ -2,6 +2,20 @@
 
 SCRIPT_DIR="$(cd $(dirname "$0"); pwd)"
 
+echo "Installing oh-my-zsh"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+
+if [ ! -e "$HOME/.vim/bundle" ]; then 
+  echo "Installing NeoBundle"
+  mkdir -p ~/.vim/bundle
+  git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+fi
+
+for tgt in backups, swaps, undo
+do
+  mkdir -p ~/.vim/${tgt}
+done
+
 echo "Creating soft links for dotfiles"
 
 for f in `ls -a|grep '^\.[a-zA-Z][a-zA-Z]*'`
@@ -14,16 +28,6 @@ do
   else
     echo "$HOME/$f already exists."
   fi
-
-  # install neobundle 
-  if [ ! -e "$HOME/.vim/bundle" ]; then 
-    mkdir -p ~/.vim/bundle
-    git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-  fi
-  mkdir -p ~/.vim/backup
-  mkdir -p ~/.vim/swaps
-  mkdir -p ~/.vim/undo
-
 
 
 done
