@@ -20,6 +20,10 @@ do
     mkdir -p ~/.vim/bundle
     git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
   fi
+  mkdir -p ~/.vim/backup
+  mkdir -p ~/.vim/swaps
+  mkdir -p ~/.vim/undo
+
 
 
 done
