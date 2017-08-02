@@ -23,7 +23,8 @@ set nocompatible
 filetype indent on
 
 " Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed,autoselect
+" set clipboard=unnamed,autoselect
+set clipboard=unnamed
 " Enhance command-line completion
 set wildmenu
 " Allow cursor keys in insert mode
@@ -429,6 +430,7 @@ NeoBundle 'Keithbsmiley/swift.vim'
 NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'racer-rust/vim-racer'
 NeoBundle 'aklt/plantuml-syntax'
+NeoBundle 'stephpy/vim-yaml'
 
 " node js
 NeoBundle 'leafgarland/typescript-vim'
@@ -571,6 +573,17 @@ let g:syntastic_ruby_checkers = ['mri','rubocop']
 " use rvm rubocop.. 
 let g:syntastic_ruby_rubocop_exec = '/Users/dicek/.rvm/gems/ruby-2.3.0/bin/rubocop'
 
+" syntastic js configure
+" エラー行に sign を表示
+let g:syntastic_enable_signs = 1
+" location list を常に更新
+let g:syntastic_always_populate_loc_list = 0
+" location list を常に表示
+let g:syntastic_auto_loc_list = 0
+" ファイルを開いた時にチェックを実行する
+let g:syntastic_check_on_open = 1
+" :wq で終了する時もチェックする
+let g:syntastic_check_on_wq = 0
 
 
 
@@ -598,4 +611,3 @@ let g:syntastic_ruby_rubocop_exec = '/Users/dicek/.rvm/gems/ruby-2.3.0/bin/ruboc
 let g:indent_guides_auto_colors=1
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
-

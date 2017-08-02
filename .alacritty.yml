@@ -92,8 +92,8 @@ colors:
     background: '0x000000'
     foreground: '0xc7c7c7'
   cursor:
-    background: '0xffffff'
-    foreground: '0x000000'
+    cursor: '0xffffff'
+    text: '0x000000'
 
   # Normal colors
   normal:
@@ -237,8 +237,8 @@ key_bindings:
 # - Paste
 # - PasteSelection
 # - Copy (TODO)
-mouse_bindings:
-  - { mouse: Middle, action: PasteSelection }
+# mouse_bindings:
+  # - { mouse: Middle, action: PasteSelection }
 
 mouse:
   double_click: { threshold: 300 }

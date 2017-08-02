@@ -138,7 +138,6 @@ fi
 #show weather
 # curl wttr.in/Tokyo
 
-# Load RVM into a shell session *as a function*
 
 # export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
@@ -160,3 +159,9 @@ function git_prompt_status() {
 
 # launch tmux
 if [ "$TMUX" = "" ]; then tmux; fi
+
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH

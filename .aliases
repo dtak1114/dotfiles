@@ -1,11 +1,15 @@
 
 # The next line updates PATH for the Google Cloud SDK.
-source "$HOME/google-cloud-sdk/path.zsh.inc"
+# source "$HOME/google-cloud-sdk/path.zsh.inc"
 # The next line enables shell command completion for gcloud.
-source "$HOME/google-cloud-sdk/completion.zsh.inc"
+# source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
 # chrome
 alias chrome='open -a /Applications/Google\ Chrome.app'
+
+# sed 
+alias sed='/usr/local/opt/gnu-sed/libexec/gnubin/sed'
+# alias readlink='~/bin/readlink'
 
 # Often forgot commands
 function tar_gzip() {
@@ -26,12 +30,14 @@ alias s="source "
 alias p="cd ~/projects"
 alias ga="git add"
 alias gst="git status"
-alias gc="git commit -m"
+alias gcv="git commit -v"
+alias gca="git commit --amend"
+alias gc="git checkout"
 alias h="history"
 alias j="jobs"
 alias ipy='ipython'
-alias usepython3=". $HOME/pyenv/venv35/bin/activate"
-alias usepython2=". $HOME/pyenv/venv27/bin/activate"
+# alias usepython3=". $HOME/pyenv/venv35/bin/activate"
+# alias usepython2=". $HOME/pyenv/venv27/bin/activate"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
