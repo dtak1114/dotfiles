@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 SCRIPT_DIR="$(cd $(dirname "$0"); pwd)"
 
@@ -14,6 +14,14 @@ do
   else
     echo "$HOME/$f already exists."
   fi
+
+  # install neobundle 
+  if [ ! -e "$HOME/.vim/bundle" ]; then 
+    mkdir -p ~/.vim/bundle
+    git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+  fi
+
+
 done
 
 echo "Done."
