@@ -39,6 +39,12 @@ alias gc="git checkout"
 alias h="history"
 alias j="jobs"
 alias ipy='ipython'
+
+# use exa command if available
+if [ -x "$(command -v exa)" ]; then
+  alias ls="exa"
+fi
+
 # alias usepython3=". $HOME/pyenv/venv35/bin/activate"
 # alias usepython2=". $HOME/pyenv/venv27/bin/activate"
 
