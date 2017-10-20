@@ -11,6 +11,7 @@ filetype indent on
 set clipboard=unnamed
 " Enhance command-line completion
 set wildmenu
+
 " Allow cursor keys in insert mode
 set esckeys
 " Allow backspace in insert mode
@@ -195,10 +196,10 @@ let g:indent_guides_auto_colors=1
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
 
-"set background=dark
 " let g:solarized_termtrans=0
 colorscheme molokai
-let g:molokai_original = 1
+set background=dark
+let g:molokai_original = 0
 let g:rehash256 = 1
 set t_Co=256
 
@@ -244,7 +245,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides' "visualize indents
 NeoBundle 'derekwyatt/vim-scala'
 " NeoBundle 'faith/vim-go'
 NeoBundle 'nathanaelkane/vim-indent-guides'
-" NeoBundle 'davidhalter/jedi-vim'
+NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'Keithbsmiley/swift.vim'
 " NeoBundle 'elzr/vim-json'
 " NeoBundle 'ensime/ensime-vim'
@@ -257,6 +258,9 @@ NeoBundle 'stephpy/vim-yaml'
 " NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'leafCage/yankround.vim'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'rhysd/devdocs.vim'
+" NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ervandew/supertab'
 
 " node js
 NeoBundle 'leafgarland/typescript-vim'
@@ -376,3 +380,31 @@ endfunction
 " ""履歴一覧(kien/ctrlp.vim)
 " nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
 " }}}
+"
+"
+" devdocs setting
+" https://github.com/rhysd/devdocs.vim
+" show document for word under selection
+" nmap K <Plug>(devdocs-under-cursor)
+
+"neosnippet
+"" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
