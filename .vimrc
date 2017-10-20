@@ -431,6 +431,9 @@ NeoBundle 'rust-lang/rust.vim'
 NeoBundle 'racer-rust/vim-racer'
 NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'stephpy/vim-yaml'
+" NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'leafCage/yankround.vim'
+NeoBundle 'kien/ctrlp.vim'
 
 " node js
 NeoBundle 'leafgarland/typescript-vim'
@@ -611,3 +614,15 @@ let g:syntastic_check_on_wq = 0
 let g:indent_guides_auto_colors=1
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size=1
+"
+" yankround.vim {{{
+"" キーマップ
+nmap p <Plug>(yankround-p)
+nmap P <Plug>(yankround-P)
+nmap <C-j> <Plug>(yankround-prev)
+nmap <C-k> <Plug>(yankround-next)
+"" 履歴取得数
+let g:yankround_max_history = 50
+""履歴一覧(kien/ctrlp.vim)
+nnoremap <silent>g<C-p> :<C-u>CtrlPYankRound<CR>
+" }}}
