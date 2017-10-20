@@ -165,3 +165,4 @@ if [ "$TMUX" = "" ]; then tmux; fi
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
+eval $(thefuck --alias)
