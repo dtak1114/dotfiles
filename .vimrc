@@ -243,7 +243,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'scrooloose/nerdcommenter' "commentout
 NeoBundle 'nathanaelkane/vim-indent-guides' "visualize indents
 NeoBundle 'derekwyatt/vim-scala'
-" NeoBundle 'faith/vim-go'
+NeoBundle 'fatih/vim-go'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'davidhalter/jedi-vim'
 NeoBundle 'Keithbsmiley/swift.vim'
@@ -261,6 +261,7 @@ NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'rhysd/devdocs.vim'
 " NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ervandew/supertab'
+NeoBundle 'jaxbot/semantic-highlight.vim'
 
 " node js
 NeoBundle 'leafgarland/typescript-vim'
@@ -408,3 +409,9 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+" semantic-color
+" let s:semanticGUIColors = [ '#72d572', '#c5e1a5', '#e6ee9c', '#fff59d', '#ffe082', '#ffcc80', '#ffab91', '#bcaaa4', '#b0bec5', '#ffa726', '#ff8a65', '#f9bdbb', '#f9bdbb', '#f8bbd0', '#e1bee7', '#d1c4e9', '#ffe0b2', '#c5cae9', '#d0d9ff', '#b3e5fc', '#b2ebf2', '#b2dfdb', '#a3e9a4', '#dcedc8' , '#f0f4c3', '#ffb74d' ]
+"
+
+"auto go fmt on save
+let g:go_gmt_options = "-tabs=false -tabwidth=4"

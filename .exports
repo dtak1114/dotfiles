@@ -32,3 +32,5 @@ fi
 export RUST_SRC_PATH="$HOME/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src/"
 
 export AWS_SDK_LOAD_CONFIG=1
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"

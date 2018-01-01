@@ -1,3 +1,5 @@
+# load proxy endpoint
+source ~/bin/proxy
 
 # Path to your oh-my-zsh installation.
 
@@ -21,9 +23,13 @@ stty -ixon &> /dev/null
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 #for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
+
+
 for file in ~/.{exports,private,aliases,functions}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
+#
+
 unset file;
 
 # Set name of the theme to load.
@@ -166,3 +172,8 @@ if [ "$TMUX" = "" ]; then tmux; fi
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 eval $(thefuck --alias)
+
+## use coreutils
+# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+alias readlink="/usr/local/opt/coreutils/libexec/gnubin/readlink"
+
