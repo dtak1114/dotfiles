@@ -11,7 +11,7 @@ if [ ! -e "$HOME/.vim/bundle" ]; then
   git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
 fi
 
-for tgt in backups, swaps, undo
+for tgt in backups swaps undo
 do
   mkdir -p ~/.vim/${tgt}
 done
