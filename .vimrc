@@ -1,4 +1,4 @@
-" Adjust indents automatically by judging the content of inserted text.
+-
 "set smartindent
 
 " Make Vim more useful
@@ -112,6 +112,7 @@ if has("autocmd")
 
   "python setting
   autocmd FileType python setl tabstop=8 expandtab shiftwidth=4 softtabstop=4 smarttab
+  autocmd FileType javascript setl tabstop=2 expandtab shiftwidth=2 softtabstop=2 smarttab
 endif
 "vim-closetag setting
 let g:closetag_filenames = "*.html,*.xml,*.erb"
@@ -158,7 +159,14 @@ set statusline+=%#warningmsg# "エラーメッセージの書式
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_javascript_checkers = ['eslint'] "ESLintを使う
+let g:syntastic_javascript_eslint_args = ['--fix'] 
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['javascript', 'ruby'], 'passive_filetypes': [] }
+
+" enable autoread to reload any files from files when checktime is called and
+" the file is changed
+set autoread
+" add an autocmd after vim started to execute checktime for *.js files on write
+au VimEnter *.js au BufWritePost *.js checktime
 
 " syntastic python configure
 " requires pip install pyflakes pep8.
@@ -171,6 +179,10 @@ let g:syntastic_enable_signs=1
 let g:syntastic_ruby_checkers = ['mri','rubocop']
 " use rvm rubocop..
 let g:syntastic_ruby_rubocop_exec = '/Users/dicek/.rvm/gems/ruby-2.3.0/bin/rubocop'
+
+" let g:syntastic_golang_checkers = [
+
+
 "dismiss searching word highligh by c-l
 nnoremap <silent> <C-L> :noh<C-L><CR>
 
@@ -179,8 +191,8 @@ nnoremap <silent> <C-L> :noh<C-L><CR>
 " basics: zc -> close folding
        " zo -> open folding
        " zR -> open all
-set foldmethod=syntax
-set foldlevelstart=3
+" set foldmethod=syntax
+" set foldlevelstart=3
 
 let javaScript_fold=1         " JavaScript
 let perl_fold=1               " Perl
@@ -216,6 +228,7 @@ noremap == gg=G''
 nnoremap <Space>v :vs<CR>:<C-u>VimShell<CR>
 map :W :w
 map :Q :q
+noremap <C-l> :term<CR>
 
 " Neovundle
 set runtimepath+=~/.vim/bundle/neobundle.vim
@@ -228,7 +241,7 @@ NeoBundle 'Shougo/vimproc.vim', {
       \     'linux' : 'make'
       \    },
       \ }
-NeoBundle 'Shougo/vimshell.vim'
+" NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'tpope/vim-surround'
 "NeoBundle 'Shougo/unite.vim'
@@ -239,20 +252,23 @@ NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'jpalardy/vim-slime'
 NeoBundle 'scrooloose/syntastic'
-NeoBundle 'vim-ruby/vim-ruby'
+" NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'scrooloose/nerdcommenter' "commentout
 NeoBundle 'nathanaelkane/vim-indent-guides' "visualize indents
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'fatih/vim-go'
+" NeoBundle 'derekwyatt/vim-scala'
+" NeoBundle 'fatih/vim-go'
+NeoBundle 'fatih/vim-go', {
+            \ 'autoload' : { 'filetypes' : 'go'  }
+            \ }
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'Keithbsmiley/swift.vim'
+" NeoBundle 'Keithbsmiley/swift.vim'
 " NeoBundle 'elzr/vim-json'
 " NeoBundle 'ensime/ensime-vim'
 " NeoBundle 'tpope/pathogen.vim'
-" NeoBundle 'moll/vim-node' " nodejs syntax highlighting
-NeoBundle 'rust-lang/rust.vim'
-NeoBundle 'racer-rust/vim-racer'
+NeoBundle 'moll/vim-node' " nodejs syntax highlighting
+" NeoBundle 'rust-lang/rust.vim'
+" NeoBundle 'racer-rust/vim-racer'
 NeoBundle 'aklt/plantuml-syntax'
 NeoBundle 'stephpy/vim-yaml'
 " NeoBundle 'osyo-manga/vim-over'
@@ -262,6 +278,10 @@ NeoBundle 'rhysd/devdocs.vim'
 " NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'ervandew/supertab'
 NeoBundle 'jaxbot/semantic-highlight.vim'
+" NeoBundle 'Blackrush/vim-gocode'
+NeoBundle 'cespare/vim-toml'
+NeoBundle 'Townk/vim-autoclose'
+NeoBundle 'pangloss/vim-javascript'
 
 " node js
 NeoBundle 'leafgarland/typescript-vim'
@@ -414,4 +434,4 @@ endif
 "
 
 "auto go fmt on save
-let g:go_gmt_options = "-tabs=false -tabwidth=4"
+let g:go_gmt_options = "-tabs=true -tabwidth=4"
