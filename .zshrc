@@ -158,13 +158,15 @@ fi
 
 # complete -F _apex apex
 
-#overwrite the slow function in oh-my-zsh
+# #overwrite the slow function in oh-my-zsh
 function git_prompt_status() {
 # nop
 }
 
 # launch tmux
-if [ "$TMUX" = "" ]; then tmux; fi
+if [[ ! $TERM =~ screen ]]; then
+    exec tmux
+fi
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
