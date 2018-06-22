@@ -39,6 +39,7 @@ alias gc="git checkout"
 alias h="history"
 alias j="jobs"
 alias ipy='ipython'
+alias alacritty='open -n /Applications/Alacritty.app'
 
 # use exa command if available
 if [ -x "$(command -v exa)" ]; then
@@ -180,3 +181,9 @@ alias reload="exec $SHELL -l"
 # alias pbpaste="xsel --clipboard --output"
 
 alias f="fuck" # behave yourself!
+
+function watch() {
+  ls $1|entr -c ${@:2} $1
+}
+alias watch="watch"
+
