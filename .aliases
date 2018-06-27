@@ -27,10 +27,10 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
-
+#
 # Shortcuts
 alias s="source "
-alias p="cd ~/projects"
+alias p="cd $GOPATH/src"
 alias ga="git add"
 alias gst="git status"
 alias gcv="git commit -v"
