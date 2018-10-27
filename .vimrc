@@ -137,15 +137,7 @@ map <C-l> gt
 "go to previous tab
 map <C-h> gT
 
-" typescript-vim
-" To run the compiler, enter :make, this will run tsc against the last saved
-" version of your currently edited file.
-" tsc compiler option
-" let g:typescript_compiler_options = ''
-" show :make error msg in subwindow
-" autocmd QuickFixCmdPost [^l]* nested cwindow
-" autocmd QuickFixCmdPost    l* nested lwindow
-
+" 
 " quickrun-vim
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
 "
@@ -161,6 +153,8 @@ set statusline+=%*
 let g:syntastic_javascript_checkers = ['eslint'] "ESLintを使う
 let g:syntastic_javascript_eslint_args = ['--fix'] 
 let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['javascript', 'ruby'], 'passive_filetypes': [] }
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi'] " You shouldn't use 'tsc' checker.
 
 " enable autoread to reload any files from files when checktime is called and
 " the file is changed
@@ -235,12 +229,16 @@ set runtimepath+=~/.vim/bundle/neobundle.vim
 call neobundle#begin(expand('~/.vim/bundle/'))
 " NeoBundle 'jiangmiao/auto-pairs'
 " originalrepos on github
+
 NeoBundle 'Shougo/vimproc.vim', {
-      \ 'build' : {
-      \     'mac' : 'make -f make_mac.mak',
-      \     'linux' : 'make'
-      \    },
-      \ }
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 " NeoBundle 'Shougo/vimshell.vim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'tpope/vim-surround'
@@ -282,9 +280,11 @@ NeoBundle 'jaxbot/semantic-highlight.vim'
 NeoBundle 'cespare/vim-toml'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'pedrohdz/vim-yaml-folds'
 
 " node js
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'Quramy/tsuquyomi'
 call neobundle#end()
 
 NeoBundleCheck
@@ -324,38 +324,16 @@ let g:racer_cmd = "/Users/dicek/.cargo/bin/racer"
 " au FileType rust nmap gx <Plug>(rust-def-vertical)
 " au FileType rust nmap <leader>gd <Plug>(rust-doc)
 noremap <F10> :RustRun<CR>
-"vim-closetag setting
-let g:closetag_filenames = "*.html,*.xml,*.erb"
-
-" カンマ連打でコメントトグル with NERDCommenter
-let NERDSpaceDelims = 1
-nmap ,, <Plug>NERDCommenterToggle
-vmap ,, <Plug>NERDCommenterToggle
-
-" nerdtree
-" ?: help
-" o: open a file
-" t: open file in new tab
-" T: open file in new tab(background)
-" r: refresh file node trees
-" m: newfile / remove/ move / copy
-"
-" open explorer
-map <C-n> :NERDTreeToggle<CR>
-"go to next tab
-map <C-l> gt
-"go to previous tab
-map <C-h> gT
 
 " typescript-vim
 " To run the compiler, enter :make, this will run tsc against the last saved
 " version of your currently edited file.
 " tsc compiler option
-" let g:typescript_compiler_options = ''
+let g:typescript_compiler_options = ''
 " show :make error msg in subwindow
 " autocmd QuickFixCmdPost [^l]* nested cwindow
 " autocmd QuickFixCmdPost    l* nested lwindow
-" https://sites.google.com/site/fudist/Home/vim-nihongo-ban/-vimrc-sample
+let g:typescript_indent_disable = 1
 """"""""""""""""""""""""""""""
 " 挿入モード時、ステータスラインの色を変更
 """"""""""""""""""""""""""""""
