@@ -117,26 +117,6 @@ endif
 "vim-closetag setting
 let g:closetag_filenames = "*.html,*.xml,*.erb"
 
-" カンマ連打でコメントトグル with NERDCommenter
-let NERDSpaceDelims = 1
-nmap ,, <Plug>NERDCommenterToggle
-vmap ,, <Plug>NERDCommenterToggle
-
-" nerdtree
-" ?: help
-" o: open a file
-" t: open file in new tab
-" T: open file in new tab(background)
-" r: refresh file node trees
-" m: newfile / remove/ move / copy
-"
-" open explorer
-map <C-n> :NERDTreeToggle<CR>
-"go to next tab
-map <C-l> gt
-"go to previous tab
-map <C-h> gT
-
 " 
 " quickrun-vim
 let g:quickrun_config = {'*': {'hook/time/enable': '1'},}
@@ -173,8 +153,6 @@ let g:syntastic_enable_signs=1
 let g:syntastic_ruby_checkers = ['mri','rubocop']
 " use rvm rubocop..
 let g:syntastic_ruby_rubocop_exec = '/Users/dicek/.rvm/gems/ruby-2.3.0/bin/rubocop'
-
-" let g:syntastic_golang_checkers = [
 
 
 "dismiss searching word highligh by c-l
@@ -222,7 +200,7 @@ noremap == gg=G''
 nnoremap <Space>v :vs<CR>:<C-u>VimShell<CR>
 map :W :w
 map :Q :q
-noremap <C-l> :term<CR>
+" noremap <C-l> :term<CR>
 
 " Neovundle
 set runtimepath+=~/.vim/bundle/neobundle.vim
@@ -413,3 +391,25 @@ endif
 
 "auto go fmt on save
 let g:go_gmt_options = "-tabs=true -tabwidth=4"
+"
+" カンマ連打でコメントトグル with NERDCommenter
+let NERDSpaceDelims = 1
+nmap ,, <Plug>NERDCommenterToggle
+vmap ,, <Plug>NERDCommenterToggle
+
+" nerdtree
+" ?: help
+" o: open a file
+" t: open file in new tab
+" T: open file in new tab(background)
+" r: refresh file node trees
+" m: newfile / remove/ move / copy
+"
+" open explorer
+map <C-n> :NERDTreeToggle<CR>
+"go to previous tab
+map <C-h> gT
+"go to next tab
+map <C-l> gt
+
+
