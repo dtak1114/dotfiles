@@ -10,9 +10,15 @@ alias chrome='open -a /Applications/Google\ Chrome.app'
 # sed 
 if [ -e "/usr/local/opt/gnu-sed/libexec/gnubin/sed" ]
 then
-  alias sed='/usr/local/opt/gnu-sed/libexec/gnubin/sed'
+  # alias sed='/usr/local/opt/gnu-sed/libexec/gnubin/sed'
+  alias sed='gsed'
 fi
-# alias readlink='~/bin/readlink'
+
+# readlink
+if [ -e "/usr/local/bin/greadlink" ]
+then
+  alias readlink="/usr/local/bin/greadlink"
+fi
 
 # Often forgot commands
 function tar_gzip() {
@@ -41,10 +47,9 @@ alias j="jobs"
 alias ipy='ipython'
 alias alacritty='open -n /Applications/Alacritty.app'
 
-# use exa command if available
-if [ -x "$(command -v exa)" ]; then
-  alias ls="exa"
-fi
+# kubesomethings
+alias k="kubectl"
+alias mk="minikube"
 
 # alias usepython3=". $HOME/pyenv/venv35/bin/activate"
 # alias usepython2=". $HOME/pyenv/venv27/bin/activate"
@@ -183,7 +188,7 @@ alias reload="exec $SHELL -l"
 alias f="fuck" # behave yourself!
 
 function watch() {
-  ls ${@:2}|entr -c $1 ${@:2}
+  ls "${@:2}"|entr -c $1 "${@:2}"
 }
 alias watch="watch"
 

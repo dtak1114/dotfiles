@@ -25,7 +25,7 @@ stty -ixon &> /dev/null
 #for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
 
 
-for file in ~/.{exports,private,aliases,functions}; do
+for file in ~/.{exports,private,aliases,functions,completion}; do
   [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 #
@@ -80,7 +80,9 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(ssh-agent tmux)
+# plugins=(ssh-agent tmux)
+plugins=(ssh-agent)
+# https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/kubectl
 
 # User configuration
 
@@ -190,3 +192,9 @@ function peco-src(){
   zle -R -c
 }
 zle -N peco-src
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/diccek/go/src/github.com/CSA-MLT/stepfunk/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/diccek/go/src/github.com/CSA-MLT/stepfunk/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/diccek/go/src/github.com/CSA-MLT/stepfunk/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/diccek/go/src/github.com/CSA-MLT/stepfunk/node_modules/tabtab/.completions/sls.zsh
