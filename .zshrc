@@ -137,7 +137,7 @@ export PYTHON_VENV_HOME=$HOME/pyenv
 if [ $DEFAULT_PYTHON_VENV_VERSION -eq 2 ]; then
   . $PYTHON_VENV_HOME/venv27/bin/activate
 elif [ $DEFAULT_PYTHON_VENV_VERSION -eq 3 ]; then
-  . $PYTHON_VENV_HOME/venv35/bin/activate
+  . $PYTHON_VENV_HOME/venv36/bin/activate
 fi
 # source /usr/local/opt/autoenv/activate.sh
 
@@ -173,7 +173,6 @@ fi
 
 # nodebrew
 export PATH=$HOME/.nodebrew/current/bin:$PATH
-eval $(thefuck --alias)
 
 ## use coreutils
 # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"

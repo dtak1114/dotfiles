@@ -183,7 +183,7 @@ alias reload="exec $SHELL -l"
 alias f="fuck" # behave yourself!
 
 function watch() {
-  ls $1|entr -c ${@:2} $1
+  ls ${@:2}|entr -c $1 ${@:2}
 }
 alias watch="watch"
 

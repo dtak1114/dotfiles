@@ -169,9 +169,14 @@ set autoread
 au VimEnter *.js au BufWritePost *.js checktime
 
 " syntastic python configure
+"
+
+let g:syntastic_python_python_exec = '/Users/dicek/pyenv/venv35/bin/python'
+let g:syntastic_python_flake8_exec = 'python3.5'
+
 " requires pip install pyflakes pep8.
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
-let g:syntastic_python_python_exec = 'python2.7'
+let g:syntastic_python_flake8_args = ['-m', 'flake8']
 let g:syntastic_enable_signs=1
 
 " syntastic ruby configure
@@ -282,6 +287,7 @@ NeoBundle 'jaxbot/semantic-highlight.vim'
 NeoBundle 'cespare/vim-toml'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'pedrohdz/vim-yaml-folds'
 
 " node js
 NeoBundle 'leafgarland/typescript-vim'
