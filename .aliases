@@ -7,6 +7,9 @@
 # chrome
 alias chrome='open -a /Applications/Google\ Chrome.app'
 
+#activate pyenv
+alias pyenv='source .pyenv/bin/activate'
+
 # sed 
 if [ -e "/usr/local/opt/gnu-sed/libexec/gnubin/sed" ]
 then
@@ -191,4 +194,5 @@ function watch() {
   ls "${@:2}"|entr -c $1 "${@:2}"
 }
 alias watch="watch"
+alias bazel="bazelisk"
 
