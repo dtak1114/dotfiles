@@ -1,3 +1,4 @@
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
 new-script() {
     cat <<'SHELLSCRIPT' > "$1"
 #!/bin/sh
