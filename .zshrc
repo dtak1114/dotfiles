@@ -177,3 +177,6 @@ zle -N peco-src
 
 #python virtualenv
 source ~/pyenv/venv37/bin/activate
+
+# anyenv
+eval "$(anyenv init -)"
