@@ -3,8 +3,6 @@ source ~/bin/proxy
 
 # Path to your oh-my-zsh installation.
 
-DEFAULT_PYTHON_VENV_VERSION=2
-# DEFAULT_PYTHON_VENV_VERSION=3
 
 #require install oh-my-zsh
 export ZSH=$HOME/.oh-my-zsh
@@ -99,9 +97,6 @@ export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 #rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-#nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
@@ -133,16 +128,6 @@ source $ZSH/oh-my-zsh.sh
 # export PATH=/home/dicek/anaconda/bin:$PATH 
 #
 
-#python virtualenv
-export PYTHON_VENV_HOME=$HOME/pyenv
-#activate by default 
-if [ $DEFAULT_PYTHON_VENV_VERSION -eq 2 ]; then
-  . $PYTHON_VENV_HOME/venv27/bin/activate
-elif [ $DEFAULT_PYTHON_VENV_VERSION -eq 3 ]; then
-  . $PYTHON_VENV_HOME/venv36/bin/activate
-fi
-# source /usr/local/opt/autoenv/activate.sh
-
 #show weather
 # curl wttr.in/Tokyo
 
@@ -167,14 +152,11 @@ function git_prompt_status() {
 
 # launch tmux
 if [[ ! $TERM =~ screen ]]; then
-    exec tmux
+   exec tmux
 fi
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-# nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 ## use coreutils
 # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
@@ -192,9 +174,6 @@ function peco-src(){
   zle -R -c
 }
 zle -N peco-src
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/diccek/go/src/github.com/CSA-MLT/stepfunk/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/diccek/go/src/github.com/CSA-MLT/stepfunk/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/diccek/go/src/github.com/CSA-MLT/stepfunk/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/diccek/go/src/github.com/CSA-MLT/stepfunk/node_modules/tabtab/.completions/sls.zsh
+
+#python virtualenv
+source ~/pyenv/venv37/bin/activate
