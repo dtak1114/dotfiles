@@ -1,5 +1,7 @@
 # load proxy endpoint
-source ~/bin/proxy
+if [ -e ~/bin/proxy ]; then
+  source ~/bin/proxy
+fi
 
 # Path to your oh-my-zsh installation.
 
@@ -37,6 +39,8 @@ unset file;
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="muse"
 
+
+ZSH_DISABLE_COMPFIX="true"
 
 setopt nonomatch
 
@@ -176,7 +180,7 @@ function peco-src(){
 zle -N peco-src
 
 #python virtualenv
-source ~/pyenv/venv37/bin/activate
+#source ~/pyenv/venv37/bin/activate
 
 # anyenv
 eval "$(anyenv init -)"
