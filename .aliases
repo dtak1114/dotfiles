@@ -7,9 +7,6 @@
 # chrome
 alias chrome='open -a /Applications/Google\ Chrome.app'
 
-#activate pyenv
-alias pyenv='source .pyenv/bin/activate'
-
 # sed 
 if [ -e "/usr/local/opt/gnu-sed/libexec/gnubin/sed" ]
 then
@@ -22,6 +19,18 @@ if [ -e "/usr/local/bin/greadlink" ]
 then
   alias readlink="/usr/local/bin/greadlink"
 fi
+
+# pr
+if [ -e "/usr/local/bin/gpr" ]
+then
+  alias pr="/usr/local/bin/gpr"
+fi
+
+# grep
+# if [ -e "/usr/local/bin/ggrep" ]
+# then
+  # alias grep="/usr/local/bin/ggrep"
+# fi
 
 # Often forgot commands
 function tar_gzip() {
@@ -91,7 +100,8 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update'
 
 # IP addresses
-alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+# alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias myip="dig TXT +short o-o.myaddr.l.google.com @ns1.google.com|sed 's/\"//g'"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
@@ -195,4 +205,15 @@ function watch() {
 }
 alias watch="watch"
 alias bazel="bazelisk"
-
+alias assume-role="assume-role -p ${AWS_PROFILE}"
+alias dc="docker-compose"
+alias af="airflow"
+alias ubuntu="docker run --rm -it --privileged --name ubuntu ubuntu /bin/bash"
+alias pwsh="docker run --rm -it --name pwsh -v $(pwd):/data mcr.microsoft.com/powershell"
+alias azure-cli="docker run -it -v $(pwd):/workspace mcr.microsoft.com/azure-cli"
+alias draw.io="/Applications/draw.io.app/Contents/MacOS/draw.io"
+alias mysqlContainer="mysql -h localhost -P 3306 --protocol=tcp -u root -p"
+function gpt() {
+  gptprompt="$@"
+  openai api completions.create -m text-davinci-003 -t 0 --stream -p $gptprompt
+}
