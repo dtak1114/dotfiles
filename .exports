@@ -36,3 +36,22 @@ export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+# export PATH="$PATH:/Users/dicek/istio-1.11.3/bin"
+
+# latex
+export PATH=/usr/texbin:$PATH
+
+# prefer use gnubin
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/opt/cisco/anyconnect/bin:$PATH"
+
+# minikube
+MINIKUBE_ACTIVE_DOCKERD=minikube
+
+# docker buildkit
+DOCKER_BUILDKIT=1
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
+export PATH="$PATH:${KREW_ROOT:-$HOME/.krew}/bin"
