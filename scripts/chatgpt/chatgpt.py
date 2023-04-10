@@ -9,7 +9,7 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 
 # write history to a file
 HISTORY_FILE = "./.gpt_history"
-HISTORY_LIMIT_BYTES = pow(1024,2) * 100 # 100 MB
+HISTORY_LIMIT_BYTES = pow(1024,2) * 10 # 10 MB
 
 # Define model and other parameters
 model = "gpt-3.5-turbo"
@@ -86,7 +86,7 @@ def write_output_and_trim(output,filename=HISTORY_FILE,limit=HISTORY_LIMIT_BYTES
         open('myfile.txt', 'w').close()
     with open(filename, 'a') as f:
         f.write(output)
-    if os.path.getsize(filename) > limit:
+    while os.path.getsize(filename) > limit:
         with open(filename, 'r') as f:
             lines = f.readlines()
         with open(filename, 'w') as f:
