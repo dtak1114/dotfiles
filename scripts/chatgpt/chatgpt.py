@@ -80,13 +80,12 @@ def main():
         write_output_and_trim("AI >> " + response+ "\n")
         # append to the messages
         messages.append(generate_message('assistant', response))
-
 def write_output_and_trim(output,filename=HISTORY_FILE,limit=HISTORY_LIMIT_BYTES):
     if not os.path.exists(filename):
-        open('myfile.txt', 'w').close()
+        open(filename, 'w').close()
     with open(filename, 'a') as f:
         f.write(output)
-    while os.path.getsize(filename) > limit:
+    if os.path.getsize(filename) > limit:
         with open(filename, 'r') as f:
             lines = f.readlines()
         with open(filename, 'w') as f:
