@@ -51,6 +51,7 @@ def main():
         # append to the messages
         messages.append(generate_message('assistant', response))
 if __name__ == '__main__':
-    with open('./role.txt') as f:
+    ROLE_TXT_PATH = os.path.join(os.path.dirname(__file__), 'role.txt')
+    with open(ROLE_TXT_PATH) as f:
         CHARACTER = f.read().strip()
     main()

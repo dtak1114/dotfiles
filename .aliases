@@ -215,5 +215,6 @@ alias draw.io="/Applications/draw.io.app/Contents/MacOS/draw.io"
 alias mysqlContainer="mysql -h localhost -P 3306 --protocol=tcp -u root -p"
 function gpt() {
   gptprompt="$@"
-  openai api completions.create -m text-davinci-003 -t 0 --stream -p $gptprompt
+  openai api completions.create -m text-davinci-003 -t 0 --stream -M 2000 -p $gptprompt
 }
+alias gpti="python $HOME/dotfiles/scripts/chatgpt/chatgpt.py"
