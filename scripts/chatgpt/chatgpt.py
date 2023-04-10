@@ -1,5 +1,7 @@
 import openai
 import os
+import time
+from functools import wraps
 
 # Set up OpenAI API key
 openai.api_key = os.environ["OPENAI_API_KEY"]
@@ -11,8 +13,25 @@ model = "gpt-3.5-turbo"
 temperature = 0
 #  max_tokens = 3000
 
+def retry(max_retries, delay, backoff):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            retries = 0
+            while retries < max_retries:
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    print(f"Exception: {e}. Retrying...")
+                    time.sleep(delay)
+                    delay *= backoff
+                    retries += 1
+            raise Exception(f"Max retries exceeded: {max_retries}")
+        return wrapper
+    return decorator
 
 # Define function to generate response
+@retry(max_retries=3, delay=2, backoff=2)
 def generate_response(messages):
     # Call the API to generate the response
     response = openai.ChatCompletion.create(
