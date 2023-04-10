@@ -4,12 +4,13 @@ import os
 # Set up OpenAI API key
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
-CHARACTER = 'You are a general helper CLI'
+CHARACTER = ''
 
 # Define model and other parameters
 model = "gpt-3.5-turbo"
 temperature = 0
 #  max_tokens = 3000
+
 
 # Define function to generate response
 def generate_response(messages):
@@ -45,10 +46,11 @@ def main():
         messages.append(generate_message('user', user_input))
         # Generate response
         response = generate_response(messages)
-        print(response)
         # print response
         print("AI >> " + response + "\n")
         # append to the messages
         messages.append(generate_message('assistant', response))
 if __name__ == '__main__':
+    with open('./role.txt') as f:
+        CHARACTER = f.read().strip()
     main()
