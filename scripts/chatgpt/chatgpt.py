@@ -9,7 +9,7 @@ openai.api_key = os.environ["OPENAI_API_KEY"]
 
 # write history to a file
 HISTORY_FILE = "./.gpt_history"
-HISTORY_LIMIT_BYTES = 1024 * 10
+HISTORY_LIMIT_BYTES = pow(1024,2) * 100 # 100 MB
 
 # Define model and other parameters
 model = "gpt-3.5-turbo"
