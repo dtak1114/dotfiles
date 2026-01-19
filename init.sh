@@ -5,10 +5,10 @@ SCRIPT_DIR="$(cd $(dirname "$0"); pwd)"
 echo "Installing oh-my-zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-if [ ! -e "$HOME/.vim/bundle" ]; then 
-  echo "Installing NeoBundle"
-  mkdir -p ~/.vim/bundle
-  git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+if [ ! -e "$HOME/.cache/dein" ]; then
+  echo "Installing dein.vim"
+  mkdir -p ~/.cache/dein
+  git clone https://github.com/Shougo/dein.vim ~/.cache/dein/repos/github.com/Shougo/dein.vim
 fi
 
 for tgt in backups swaps undo
