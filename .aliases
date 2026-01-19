@@ -213,8 +213,4 @@ alias pwsh="docker run --rm -it --name pwsh -v $(pwd):/data mcr.microsoft.com/po
 alias azure-cli="docker run -it -v $(pwd):/workspace mcr.microsoft.com/azure-cli"
 alias draw.io="/Applications/draw.io.app/Contents/MacOS/draw.io"
 alias mysqlContainer="mysql -h localhost -P 3306 --protocol=tcp -u root -p"
-function gpt() {
-  gptprompt="$@"
-  openai api completions.create -m text-davinci-003 -t 0 --stream -M 2000 -p $gptprompt
-}
-alias gpti="python $HOME/dotfiles/scripts/chatgpt/chatgpt.py"
+alias claude="claude --dangerously-skip-permissions"

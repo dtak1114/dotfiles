@@ -1,8 +1,3 @@
-# load proxy endpoint
-if [ -e ~/bin/proxy ]; then
-  source ~/bin/proxy
-fi
-
 # Path to your oh-my-zsh installation.
 
 
@@ -149,21 +144,18 @@ source $ZSH/oh-my-zsh.sh
 
 # complete -F _apex apex
 
-# #overwrite the slow function in oh-my-zsh
-function git_prompt_status() {
-# nop
-}
+# # #overwrite the slow function in oh-my-zsh
+# function git_prompt_status() {
+# # nop
+# }
 
 # launch tmux
-if [[ ! $TERM =~ screen ]]; then
-   exec tmux
+if [[ -z "$TMUX" ]] && command -v tmux &> /dev/null; then
+    exec tmux
 fi
 
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 ## use coreutils
-# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 alias readlink="/usr/local/opt/coreutils/libexec/gnubin/readlink"
 
 # peco setting
@@ -178,9 +170,6 @@ function peco-src(){
   zle -R -c
 }
 zle -N peco-src
-
-#python virtualenv
-#source ~/pyenv/venv37/bin/activate
 
 # anyenv
 eval "$(anyenv init -)"
